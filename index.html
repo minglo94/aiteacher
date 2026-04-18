@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="幫助教師備課、評估、溝通的 AI 提示詞工具庫" />
+  <title>AI 提示詞庫 — 教師版</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ── Header ── -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <div class="header-text">
+          <h1 class="site-title">🏫 AI 提示詞庫 — 教師版</h1>
+          <p class="site-subtitle">幫助教師備課、評估、溝通的 AI 提示詞工具</p>
+        </div>
+        <div class="header-badge">
+          <span class="badge-count" id="total-count">12 條提示詞</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Controls ── -->
+  <div class="controls-bar">
+    <div class="container">
+
+      <!-- Subject Nav -->
+      <nav class="subject-nav" id="subject-nav" role="navigation" aria-label="類別篩選">
+        <!-- populated by JS -->
+      </nav>
+
+      <!-- Type Tabs + Search -->
+      <div class="controls-row">
+        <div class="type-tabs" id="type-tabs" role="tablist" aria-label="類型篩選">
+          <button class="tab-btn active" data-type="all"         role="tab" aria-selected="true">全部</button>
+          <button class="tab-btn"        data-type="plan"        role="tab" aria-selected="false">規劃</button>
+          <button class="tab-btn"        data-type="create"      role="tab" aria-selected="false">創作</button>
+          <button class="tab-btn"        data-type="assess"      role="tab" aria-selected="false">評估</button>
+          <button class="tab-btn"        data-type="communicate" role="tab" aria-selected="false">溝通</button>
+        </div>
+        <div class="search-wrap">
+          <span class="search-icon">🔍</span>
+          <input
+            type="search"
+            id="search-input"
+            class="search-input"
+            placeholder="搜尋提示詞標題或關鍵字…"
+            aria-label="搜尋提示詞"
+          />
+          <button class="search-clear" id="search-clear" aria-label="清除搜尋" hidden>✕</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Main Content ── -->
+  <main class="main-content">
+    <div class="container">
+
+      <!-- Result summary -->
+      <div class="result-summary" id="result-summary" aria-live="polite">
+        顯示全部 12 條提示詞
+      </div>
+
+      <!-- Prompt Grid -->
+      <div class="prompt-grid" id="prompt-grid" role="list">
+        <!-- cards injected by JS -->
+      </div>
+
+      <!-- Empty state -->
+      <div class="empty-state" id="empty-state" hidden>
+        <span class="empty-icon">🔎</span>
+        <p>找不到符合條件的提示詞</p>
+        <button class="btn-reset" id="btn-reset">重設篩選</button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ── Modal ── -->
+  <div class="modal-backdrop" id="modal-backdrop" hidden aria-modal="true" role="dialog" aria-labelledby="modal-title">
+    <div class="modal">
+      <button class="modal-close" id="modal-close" aria-label="關閉">✕</button>
+
+      <!-- Modal header -->
+      <div class="modal-header" id="modal-header">
+        <div class="modal-badges" id="modal-badges"></div>
+        <h2 class="modal-title" id="modal-title"></h2>
+      </div>
+
+      <div class="modal-body" id="modal-body">
+        <!-- Placeholder inputs -->
+        <div class="modal-inputs" id="modal-inputs">
+          <!-- injected by JS when placeholders exist -->
+        </div>
+
+        <!-- Full prompt preview -->
+        <div class="modal-prompt-wrap">
+          <div class="modal-prompt-label">提示詞全文 <span class="label-hint">（已填入的關鍵字會即時更新）</span></div>
+          <pre class="modal-prompt-text" id="modal-prompt-text"></pre>
+        </div>
+      </div>
+
+      <!-- Copy button -->
+      <div class="modal-footer">
+        <button class="btn-copy-modal" id="btn-copy-modal">📋 複製完整提示詞</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Toast ── -->
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    ✅ 已複製到剪貼板！貼入 ChatGPT / Claude 即可使用。
+  </div>
+
+  <!-- ── Scripts ── -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
